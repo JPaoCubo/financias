@@ -1,12 +1,19 @@
-#agora irei testar sobre como criar, e adicionar itens a um dicionario
-#primeiro irei testar como funciona as variaveis dentro do dicionario
+#agora vou fazer usando pandas
 
-categoria=input("digite a categoria: ")
-valor=input("digite o valor: ")
+import pandas as pd
+
+categoria1=input("digite a categoria: ")
+valor1=input("digite o valor: ")
+categoria2=input("digite a categoria: ")
+valor2=input("digite o valor: ")
 
 despesas={
-    "categoria":[categoria],
-    "valor":[valor]
+    "categoria":[categoria1,categoria2],
+    "valor":[valor1,valor2]
 }
 
-print(despesas)
+df = pd.DataFrame(despesas)
+
+print(df)
+
+df.to_excel('meu_controle.xlsx', index=False)
