@@ -1,0 +1,27 @@
+import pandas as pd
+
+lista_categoria =[]
+lista_valores=[]
+
+print("Digite suas despesas: \n(ou escreva 'fim' no momento da categoria para encerrar)")
+
+while True:
+    categoria=input("Categoria: ")
+    if categoria.lower() == 'fim':
+        break
+    valor=float(input("Valor: "))
+
+    lista_categoria.append(categoria)
+    lista_valores.append(valor)
+
+dados_financeiros = {
+    'Categoria': lista_categoria,
+    'Valor': lista_valores
+}
+
+df = pd.DataFrame(dados_financeiros)
+
+print("\nResumo final")
+print(df)
+
+df.to_excel("planilha_financeira.xlsx", index=False)
