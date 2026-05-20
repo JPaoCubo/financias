@@ -1,0 +1,58 @@
+import pandas as pd
+
+lista_descricao=[]
+lista_valor=[]
+lista_tipo=[]
+
+total_acumulado_despesas=0
+total_acumulado_ganhos=0
+while True:
+    pergunta=(input("Digite:\n1-Despesas\n2-Ganho\n3-Saldo Final\nfim-Para encerrar\n"))
+    if pergunta == '1' or pergunta == '2':
+        desc= input("Digite a descrição (Aluguel, Salário, etc): ")
+
+        # Tratamento do float: substitui vírgula por ponto para o Python entender [1]
+        valor = input("Valor: ")
+        valor_num = float(valor.replace(',', '.'))
+
+        lista_descricao.append(desc)
+        lista_valor.append(valor_num)
+
+        if pergunta == '1':
+            lista_tipo.append('Despesas')
+            total_acumulado_despesas += valor_num
+        
+        elif pergunta == '2':
+            lista_tipo.append("Ganho")
+            total_acumulado_ganhos += valor_num
+
+
+    elif pergunta == '3':
+        saldo_atual = total_acumulado_ganhos - total_acumulado_despesas
+        print(f"\n>>> Saldo Atual em Memória: R$ {saldo_atual:.2f}")
+
+    elif pergunta == 'fim':
+        break
+    
+    else:
+        print("Opção inválida! Digite 1, 2, 3 ou 'fim'.")
+
+saldo_total= total_acumulado_ganhos-total_acumulado_despesas
+
+lista_descricao.append("Saldo Total")
+lista_valor.append(saldo_total)
+lista_tipo.append("Resumo")
+
+
+dados_financeiros = {
+    "Descrição":lista_descricao,
+    "Valor": lista_valor,
+    "Tipo": lista_tipo
+}
+
+df = pd.DataFrame(dados_financeiros)
+
+print("\nResumo final")
+print(df)
+
+df.to_excel("planilha_financeira0.3.xlsx", index=False)
