@@ -1,0 +1,49 @@
+import pandas as pd
+
+lista_despesas =[]
+lista_valor_despesas=[]
+lista_ganho=[]
+lista_valor_ganho=[]
+#devo colocar os saldo final e visao geral
+#pergunta=int(input("Digite:\n1-Despesas\n2-Ganho\n3-Saldo Final\n4-Visão Geral\nfim-Para encerrar\n"))
+
+while True:
+    pergunta=(input("Digite:\n1-Despesas\n2-Ganho\n3-Saldo Final\n4-Visão Geral\nfim-Para encerrar\n"))
+    if pergunta == '1':
+        tipo_despesa=input("Digite tipo de despesa: ")
+        valor_despesa=float(input("Digite o valor da despesa: "))
+
+        lista_despesas.append(tipo_despesa)
+        lista_valor_despesas.append(valor_despesa)
+
+
+    elif pergunta == '2':
+        tipo_ganho=input("Digite o ganho: ")
+        valor_ganho=float(input("Digite o valor ganho: "))
+
+        lista_ganho.append(tipo_ganho)
+        lista_valor_ganho.append(valor_ganho)
+    
+    elif pergunta == '3':
+        
+
+
+
+    elif pergunta == 'fim':
+        break
+
+
+
+
+dados_financeiros = {
+    'Despesas': lista_despesas,
+    'Valor Despesas': lista_valor_despesas,
+    'Ganho': lista_ganho,
+    'Valor Ganho': lista_valor_ganho
+}
+
+df = pd.DataFrame(dados_financeiros)
+
+print("\nResumo final")
+print(df)
+
